@@ -1,7 +1,14 @@
 <template>
   <div class="aesthetic">
-    <input v-model="text" v-bind:placeholder="placeholder" autofocus>
-    <h2>{{ aesthetic }}</h2>
+    <div>
+      <textarea id="textarea-input" v-model="text" v-bind:placeholder="placeholder" cols="40" rows="5" autofocus></textarea>
+    </div>
+    <div>
+      <textarea id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" cols="40" rows="5" readonly></textarea>
+    </div>
+    <div>
+      <button id="button-copy" v-on:click="copyToClipboard">Copy</button>
+    </div>
   </div>
 </template>
 
@@ -18,18 +25,32 @@ export default {
     aestheticize(c) {
       const aestheticBaseCharCode = 65248;
       const spaceCharCode = ' '.charCodeAt(0);
+      const newLineCharCode = '\n'.charCodeAt(0);
       const aestheticSpace = 12288;
 
       const charCode = c.charCodeAt(0);
 
-      const aestheticCharCode =
-        charCode === spaceCharCode
-          ? aestheticSpace
-          : charCode + aestheticBaseCharCode;
+      let aestheticCharCode = '';
+
+      switch (charCode) {
+        case spaceCharCode:
+          aestheticCharCode = aestheticSpace;
+          break;
+        case newLineCharCode:
+          aestheticCharCode = newLineCharCode;
+          break;
+        default:
+          aestheticCharCode = charCode + aestheticBaseCharCode;
+          break;
+      }
 
       const aestheticCharacter = String.fromCharCode(aestheticCharCode);
 
       return aestheticCharacter;
+    },
+    copyToClipboard() {
+      this.$refs.aestheticText.select();
+      document.execCommand('copy');
     },
   },
   computed: {
@@ -43,7 +64,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
