@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+[Live](https://lex.github.io/aesthetic/)
+
 ## Build Setup
 
 ``` bash
