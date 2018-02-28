@@ -12,6 +12,9 @@ export default {
   components: {
     Aesthetic,
   },
+  created() {
+    document.title = 'ａｅｓｔｈｅｔｉｃ';
+  },
 };
 </script>
 
