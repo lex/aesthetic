@@ -1,7 +1,7 @@
 <template>
   <div class="aesthetic">
     <div>
-      <textarea id="textarea-input" v-model="text" placeholder="text here" cols="50" rows="5" autofocus></textarea>
+      <textarea id="textarea-input" ref="text" v-model="text" placeholder="text here" cols="50" rows="5" autofocus></textarea>
     </div>
     <div>
       <textarea id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" v-bind:placeholder="aestheticPlaceholder" cols="50" rows="5" readonly></textarea>
@@ -65,6 +65,7 @@ export default {
     copyToClipboard() {
       this.$refs.aestheticText.select();
       document.execCommand('copy');
+      this.$refs.text.focus();
     },
   },
   computed: {
