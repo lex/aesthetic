@@ -1,13 +1,13 @@
 <template>
   <div class="aesthetic">
     <div>
-      <textarea id="textarea-input" v-model="text" v-bind:placeholder="placeholder" cols="40" rows="5" autofocus></textarea>
+      <textarea id="textarea-input" v-model="text" placeholder="text here" cols="50" rows="5" autofocus></textarea>
     </div>
     <div>
-      <textarea id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" cols="40" rows="5" readonly></textarea>
+      <textarea id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" v-bind:placeholder="aestheticPlaceholder" cols="50" rows="5" readonly></textarea>
     </div>
     <div>
-      <button id="button-copy" v-on:click="copyToClipboard">Copy</button>
+      <button id="button-copy" v-on:click="copyToClipboard">Ｃｏｐｙ</button>
     </div>
   </div>
 </template>
@@ -17,8 +17,8 @@ export default {
   name: 'Aesthetic',
   data() {
     return {
-      placeholder: 'text here',
       text: '',
+      aestheticPlaceholder: 'ｔｅｘｔ　ｗｉｌｌ　ａｐｐｅａｒ　ｈｅｒｅ',
     };
   },
   methods: {
@@ -79,19 +79,22 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
+#button-copy {
+  background-color: rgb(197, 68, 103);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
-  margin: 0 10px;
+  font-size: 24px;
 }
-a {
-  color: #42b983;
+textarea {
+  font-size: 18px;
+  background-color: rgb(72, 203, 166);
+  color: white;
+}
+textarea::placeholder {
+  color: lightgray;
 }
 </style>
