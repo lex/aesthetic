@@ -22,6 +22,17 @@ export default {
     };
   },
   methods: {
+    unUmlautize(s) {
+      return s
+        .replace(/å/g, 'a')
+        .replace(/Å/g, 'A')
+        .replace(/ä/g, 'a')
+        .replace(/Ä/g, 'a')
+        .replace(/ö/g, 'o')
+        .replace(/Ö/g, 'O')
+        .replace(/ü/g, 'u')
+        .replace(/Ü/g, 'U');
+    },
     aestheticize(c) {
       const aestheticBaseCharCode = 65248;
       const spaceCharCode = ' '.charCodeAt(0);
@@ -30,7 +41,7 @@ export default {
 
       const charCode = c.charCodeAt(0);
 
-      let aestheticCharCode = '';
+      let aestheticCharCode = 0;
 
       switch (charCode) {
         case spaceCharCode:
@@ -55,7 +66,7 @@ export default {
   },
   computed: {
     aesthetic() {
-      return this.text
+      return this.unUmlautize(this.text)
         .split('')
         .map(c => this.aestheticize(c))
         .join('');
