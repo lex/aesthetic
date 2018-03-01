@@ -55,7 +55,10 @@ export default {
           break;
       }
 
-      const aestheticCharacter = String.fromCharCode(aestheticCharCode);
+      const aestheticCharacter =
+        charCode >= 32 && charCode <= 126
+          ? String.fromCharCode(aestheticCharCode)
+          : '';
 
       return aestheticCharacter;
     },
