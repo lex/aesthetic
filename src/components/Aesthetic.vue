@@ -135,7 +135,7 @@ textarea {
   color: white;
 }
 textarea::placeholder {
-  color: lightgray;
+  color: rgb(58, 131, 252);
 }
 .title {
   margin-top: 40px;
