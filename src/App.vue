@@ -31,6 +31,6 @@ export default {
   background-color: rgb(30, 30, 30);
 }
 body {
-  background-color: rgb(30, 30, 30);
+  background-color: rgb(30, 30, 30) !important;
 }
 </style>
