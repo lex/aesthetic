@@ -1,16 +1,19 @@
 <template>
   <div id="app">
+    <NavigationBar/>
     <Aesthetic/>
   </div>
 </template>
 
 <script>
 import Aesthetic from './components/Aesthetic';
+import NavigationBar from './components/NavigationBar';
 
 export default {
   name: 'App',
   components: {
     Aesthetic,
+    NavigationBar,
   },
   created() {
     document.title = 'ａｅｓｔｈｅｔｉｃ';
@@ -25,7 +28,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 body {
   background-color: rgb(30, 30, 30);
