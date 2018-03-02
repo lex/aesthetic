@@ -98,6 +98,13 @@ export default {
         .join('');
     },
   },
+  watch: {
+    text: function() {
+       const input = this.$refs.text
+       const output = this.$refs.aestheticText
+       output.scrollTop = input.scrollTop
+    }
+  },
   mounted() {
     // css is too hard
     const text = 'ａｅｓｔｈｅｔｉｃｃ';
