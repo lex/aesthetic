@@ -30,4 +30,7 @@ export default {
   color: #2c3e50;
   background-color: rgb(30, 30, 30);
 }
+body {
+  background-color: rgb(30, 30, 30);
+}
 </style>
