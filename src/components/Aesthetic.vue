@@ -109,7 +109,7 @@ export default {
 
     for (let i = 28; i >= 0; i -= 2) {
       context.font = `${38 - i}px Helvetica Neue`;
-      const stroke = (255 - i ** 2) / 0.9;
+      const stroke = Math.max(255 - i ** 2 / 0.9, 0);
       context.strokeStyle = `rgba(${[stroke, stroke, stroke, stroke].join(
         ', ',
       )})`;
