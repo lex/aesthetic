@@ -1,15 +1,31 @@
 <template>
-  <div class="aesthetic">
-    <div>
-      <textarea id="textarea-input" ref="text" v-model="text" placeholder="text here" cols="50" rows="5" autofocus></textarea>
-    </div>
-    <div>
-      <textarea id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" v-bind:placeholder="aestheticPlaceholder" cols="50" rows="5" readonly></textarea>
-    </div>
-    <div>
-      <button id="button-copy" v-on:click="copyToClipboard">Ｃｏｐｙ</button>
-    </div>
-  </div>
+  <b-container>
+
+    <b-row>
+      <b-col>
+        <h2>ａｅｓｔｈｅｔｉｃ</h2>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col>
+        <textarea id="textarea-input" ref="text" v-model="text" placeholder="text here" cols="50" rows="5" autofocus></textarea>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col>
+        <textarea id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" v-bind:placeholder="aestheticPlaceholder" cols="50" rows="5" readonly></textarea>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col>
+        <button id="button-copy" v-on:click="copyToClipboard">Ｃｏｐｙ</button>
+      </b-col>
+    </b-row>
+
+  </b-container>
 </template>
 
 <script>
@@ -97,5 +113,11 @@ textarea {
 }
 textarea::placeholder {
   color: lightgray;
+}
+h2 {
+  color: rgb(255, 255, 255);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 36px;
 }
 </style>
