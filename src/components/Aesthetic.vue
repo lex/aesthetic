@@ -137,8 +137,8 @@ textarea {
 textarea::placeholder {
   color: rgb(58, 131, 252);
 }
-.title {
-  margin-top: 40px;
-  margin-bottom: 40px;
+#title {
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 </style>
