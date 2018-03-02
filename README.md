@@ -1,5 +1,8 @@
 # aesthetic
 
+[![Build Status](https://travis-ci.org/lex/aesthetic.svg?branch=master)](https://travis-ci.org/lex/aesthetic)
+[![Coverage Status](https://coveralls.io/repos/github/lex/aesthetic/badge.svg?branch=master)](https://coveralls.io/github/lex/aesthetic?branch=master)
+
 > A Vue.js project
 
 [Live](https://lex.github.io/aesthetic/)
