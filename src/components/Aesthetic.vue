@@ -3,7 +3,7 @@
 
     <b-row>
       <b-col>
-        <h2>ａｅｓｔｈｅｔｉｃ</h2>
+        <canvas id="title" ref="title" width="400" height="100">please update browser to see title</canvas>
       </b-col>
     </b-row>
 
@@ -91,6 +91,29 @@ export default {
         .map(c => this.aestheticize(c))
         .join('');
     },
+    title() {
+      return this.text
+        .split('')
+        .map(c => this.aestheticize(c))
+        .join('');
+    },
+  },
+  mounted() {
+    // css is too hard
+    const text = 'ａｅｓｔｈｅｔｉｃｃ';
+
+    const canvas = this.$refs.title;
+    const context = canvas.getContext('2d');
+    context.fillStyle = 'rgb(30, 30, 30)';
+    context.textAlign = 'center';
+
+    for (let i = 28; i >= 0; i -= 2) {
+      context.font = `${38 - i}px Helvetica Neue`;
+      const stroke = 255 - Math.pow(i / 2, 2);
+      context.strokeStyle = `rgb(${[stroke, stroke, stroke].join(', ')})`;
+      context.fillText(text, canvas.width / 2, canvas.height / 2 - i);
+      context.strokeText(text, canvas.width / 2, canvas.height / 2 - i);
+    }
   },
 };
 </script>
@@ -114,10 +137,8 @@ textarea {
 textarea::placeholder {
   color: lightgray;
 }
-h2 {
-  color: rgb(255, 255, 255);
+.title {
   margin-top: 40px;
   margin-bottom: 40px;
-  font-size: 36px;
 }
 </style>
