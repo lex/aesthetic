@@ -56,7 +56,7 @@ export default {
       }
 
       const aestheticCharacter =
-        charCode >= 32 && charCode <= 126
+        charCode === newLineCharCode || (charCode >= 32 && charCode <= 126)
           ? String.fromCharCode(aestheticCharCode)
           : '';
 
