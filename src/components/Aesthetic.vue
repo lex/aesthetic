@@ -73,11 +73,11 @@ export default {
     },
   },
   watch: {
-    text: function() {
-       const input = this.$refs.text
-       const output = this.$refs.aestheticText
-       output.scrollTop = input.scrollTop
-    }
+    text: () => {
+      const input = this.$refs.text;
+      const output = this.$refs.aestheticText;
+      output.scrollTop = input.scrollTop;
+    },
   },
   mounted() {
     this.drawTitle();
