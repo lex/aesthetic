@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lex/aesthetic.svg?branch=master)](https://travis-ci.org/lex/aesthetic)
 [![Coverage Status](https://coveralls.io/repos/github/lex/aesthetic/badge.svg?branch=master)](https://coveralls.io/github/lex/aesthetic?branch=master)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 > A Vue.js project
 
