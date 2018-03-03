@@ -21,7 +21,7 @@
 
     <b-row>
       <b-col>
-        <button id="button-copy" v-on:click="copyToClipboard">Ｃｏｐｙ</button>
+        <button id="button-copy" v-on:click="copyToClipboard">{{ copy }}</button>
       </b-col>
     </b-row>
 
@@ -29,93 +29,51 @@
 </template>
 
 <script>
+import aestheticize from '../utils/aestheticizer';
+
 export default {
   name: 'Aesthetic',
   data() {
     return {
+      title: 'aestheticc',
       text: '',
-      aestheticPlaceholder: 'ｔｅｘｔ　ｗｉｌｌ　ａｐｐｅａｒ　ｈｅｒｅ',
+      aestheticPlaceholder: aestheticize('text will appear here'),
+      copy: aestheticize('Copy'),
     };
   },
   methods: {
-    unUmlautize(s) {
-      return s
-        .replace(/å/g, 'a')
-        .replace(/Å/g, 'A')
-        .replace(/ä/g, 'a')
-        .replace(/Ä/g, 'a')
-        .replace(/ö/g, 'o')
-        .replace(/Ö/g, 'O')
-        .replace(/ü/g, 'u')
-        .replace(/Ü/g, 'U');
-    },
-    aestheticize(c) {
-      const aestheticBaseCharCode = 65248;
-      const spaceCharCode = ' '.charCodeAt(0);
-      const newLineCharCode = '\n'.charCodeAt(0);
-      const aestheticSpace = 12288;
-
-      const charCode = c.charCodeAt(0);
-
-      let aestheticCharCode = 0;
-
-      switch (charCode) {
-        case spaceCharCode:
-          aestheticCharCode = aestheticSpace;
-          break;
-        case newLineCharCode:
-          aestheticCharCode = newLineCharCode;
-          break;
-        default:
-          aestheticCharCode = charCode + aestheticBaseCharCode;
-          break;
-      }
-
-      const aestheticCharacter =
-        charCode === newLineCharCode || (charCode >= 32 && charCode <= 126)
-          ? String.fromCharCode(aestheticCharCode)
-          : '';
-
-      return aestheticCharacter;
-    },
     copyToClipboard() {
       this.$refs.aestheticText.select();
       document.execCommand('copy');
       this.$refs.text.focus();
     },
+    drawTitle() {
+      // css is too hard
+      const text = aestheticize(this.title);
+
+      const canvas = this.$refs.title;
+      const context = canvas.getContext('2d');
+      context.fillStyle = 'rgb(30, 30, 30)';
+      context.textAlign = 'center';
+
+      for (let i = 28; i >= 0; i -= 2) {
+        context.font = `${38 - i}px Helvetica Neue`;
+        const stroke = Math.max(255 - i ** 2 / 0.9, 0);
+        context.strokeStyle = `rgba(${[stroke, stroke, stroke, stroke].join(
+          ', ',
+        )})`;
+        context.fillText(text, canvas.width / 2, canvas.height / 2 - i);
+        context.strokeText(text, canvas.width / 2, canvas.height / 2 - i);
+      }
+    },
   },
   computed: {
     aesthetic() {
-      return this.unUmlautize(this.text)
-        .split('')
-        .map(c => this.aestheticize(c))
-        .join('');
-    },
-    title() {
-      return this.text
-        .split('')
-        .map(c => this.aestheticize(c))
-        .join('');
+      return aestheticize(this.text);
     },
   },
   mounted() {
-    // css is too hard
-    const text = 'ａｅｓｔｈｅｔｉｃｃ';
-
-    const canvas = this.$refs.title;
-    const context = canvas.getContext('2d');
-    context.fillStyle = 'rgb(30, 30, 30)';
-    context.textAlign = 'center';
-
-    for (let i = 28; i >= 0; i -= 2) {
-      context.font = `${38 - i}px Helvetica Neue`;
-      const stroke = Math.max(255 - i ** 2 / 0.9, 0);
-      context.strokeStyle = `rgba(${[stroke, stroke, stroke, stroke].join(
-        ', ',
-      )})`;
-      context.fillText(text, canvas.width / 2, canvas.height / 2 - i);
-      context.strokeText(text, canvas.width / 2, canvas.height / 2 - i);
-    }
+    this.drawTitle();
   },
 };
 </script>
