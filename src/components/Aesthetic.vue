@@ -9,13 +9,13 @@
 
     <b-row>
       <b-col>
-        <textarea id="textarea-input" ref="text" v-model="text" placeholder="text here" cols="50" rows="5" autofocus></textarea>
+        <textarea class="form-control" id="textarea-input" ref="text" v-model="text" placeholder="text here" rows="5" autofocus></textarea>
       </b-col>
     </b-row>
 
     <b-row>
       <b-col>
-        <textarea id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" v-bind:placeholder="aestheticPlaceholder" cols="50" rows="5" readonly></textarea>
+        <textarea class="form-control" id="textarea-aesthetic" ref="aestheticText" v-bind:value="aesthetic" v-bind:placeholder="aestheticPlaceholder" rows="5" readonly></textarea>
       </b-col>
     </b-row>
 
@@ -132,15 +132,19 @@ export default {
   font-size: 24px;
 }
 textarea {
-  font-size: 18px;
-  background-color: rgb(72, 203, 166);
-  color: white;
+  font-size: 18px !important;
+  background-color: rgb(72, 203, 166) !important;
+  color: white !important;
 }
 textarea::placeholder {
   color: rgb(58, 131, 252);
 }
 #title {
   margin-top: 30px;
+  margin-bottom: 10px;
+}
+.row {
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 </style>
