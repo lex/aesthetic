@@ -73,7 +73,7 @@ export default {
     },
   },
   watch: {
-    text: () => {
+    text() {
       const input = this.$refs.text;
       const output = this.$refs.aestheticText;
       output.scrollTop = input.scrollTop;
