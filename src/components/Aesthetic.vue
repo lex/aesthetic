@@ -102,7 +102,7 @@ textarea {
   color: white !important;
 }
 textarea::placeholder {
-  color: rgb(58, 131, 252);
+  color: rgb(222, 222, 222);
 }
 #title {
   margin-top: 30px;
