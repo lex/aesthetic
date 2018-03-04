@@ -9,6 +9,7 @@
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage && cat test/unit/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "npm run unit",
+    "test:watch": "jest --config test/unit/jest.conf.js --watch",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js",
     "deploy": "npm run build && push-dir --dir=dist --branch=gh-pages --cleanup"
