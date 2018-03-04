@@ -1,3 +1,12 @@
+const CHAR_CODE_BASE_AESTHETIC = 65248;
+const CHAR_CODE_SPACE = ' '.charCodeAt(0);
+const CHAR_CODE_NEWLINE = '\n'.charCodeAt(0);
+const CHAR_CODE_AESTHETIC_SPACE = 12288;
+
+function isAscii(charCode) {
+  return charCode === CHAR_CODE_NEWLINE || (charCode >= 32 && charCode <= 126);
+}
+
 function unUmlautize(s) {
   return s
     .replace(/å/g, 'a')
@@ -11,31 +20,25 @@ function unUmlautize(s) {
 }
 
 function aestheticizeCharacter(c) {
-  const aestheticBaseCharCode = 65248;
-  const spaceCharCode = ' '.charCodeAt(0);
-  const newLineCharCode = '\n'.charCodeAt(0);
-  const aestheticSpace = 12288;
-
   const charCode = c.charCodeAt(0);
 
   let aestheticCharCode = 0;
 
   switch (charCode) {
-    case spaceCharCode:
-      aestheticCharCode = aestheticSpace;
+    case CHAR_CODE_SPACE:
+      aestheticCharCode = CHAR_CODE_AESTHETIC_SPACE;
       break;
-    case newLineCharCode:
-      aestheticCharCode = newLineCharCode;
+    case CHAR_CODE_NEWLINE:
+      aestheticCharCode = CHAR_CODE_NEWLINE;
       break;
     default:
-      aestheticCharCode = charCode + aestheticBaseCharCode;
+      aestheticCharCode = CHAR_CODE_BASE_AESTHETIC + charCode;
       break;
   }
 
-  const aestheticCharacter =
-    charCode === newLineCharCode || (charCode >= 32 && charCode <= 126)
-      ? String.fromCharCode(aestheticCharCode)
-      : '';
+  const aestheticCharacter = isAscii(charCode)
+    ? String.fromCharCode(aestheticCharCode)
+    : '';
 
   return aestheticCharacter;
 }
