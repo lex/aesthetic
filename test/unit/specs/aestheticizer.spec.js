@@ -19,7 +19,7 @@ describe('aestheticizer.js', () => {
     expect(aestheticize(input)).toEqual(expected);
   });
 
-  it('should aestheticize newlines correctly', () => {
+  it('should aestheticize spaces correctly', () => {
     const input = 'a b c';
     const expected = 'ａ　ｂ　ｃ';
     expect(aestheticize(input)).toEqual(expected);
