@@ -8,6 +8,7 @@
 <script>
 import Aesthetic from './components/Aesthetic';
 import NavigationBar from './components/NavigationBar';
+import aestheticize from './utils/aestheticizer';
 
 export default {
   name: 'App',
@@ -16,7 +17,7 @@ export default {
     NavigationBar,
   },
   created() {
-    document.title = 'ａｅｓｔｈｅｔｉｃ';
+    document.title = aestheticize('aesthetic');
   },
 };
 </script>
